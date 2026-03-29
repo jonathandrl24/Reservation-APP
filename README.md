@@ -44,11 +44,11 @@ A web application for managing reservations, built with:&#10;
 ## Project Structure&#10;
 ```Reservation APP/&#10;
 ├── Reservation-Backend/
-├── src/main/java/...# Controllers, Services, Models&#10;
-│   └── src/main/resources/   # application.properties + local props&#10;
-└── reservation-frontend/    # Angular app&#10;
-├── src/app/              # Components, Services&#10;
-└── src/environments/      # Configs&#10;
+├── src/main/java/...# Controllers, Services, Models
+│   └── src/main/resources/   # application.properties + local props
+└── reservation-frontend/    # Angular app
+├── src/app/              # Components, Services
+└── src/environments/      # Configs
 ```
 
 ## Testing&#10;
