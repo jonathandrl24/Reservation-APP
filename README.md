@@ -1,2 +1,61 @@
-# Reservation App&#10;&#10;## Overview&#10;A web application for managing reservations, built with:&#10;- **Frontend**: Angular (modern SPA framework)&#10;- **Backend**: Spring Boot (Java REST API with PostgreSQL database)&#10;&#10;Features: Create, list, and manage reservations with status tracking.&#10;&#10;## Prerequisites&#10;- Java 17+ and Maven (backend)&#10;- Node.js 18+ and Angular CLI (frontend)&#10;- PostgreSQL database (localhost:5432/reservation, customize in application-local.properties)&#10;&#10;## Secure Configs (gitignored)&#10;- `Reservation-Backend/src/main/resources/application-local.properties`: DB credentials (edit password!).&#10;- `reservation-frontend/src/environments/environment.local.ts`: API secrets.&#10;&#10;## Setup & Run&#10;&#10;### Backend&#10;1. cd Reservation-Backend&#10;2. Edit `application-local.properties` (set your DB password).&#10;3. `mvn spring-boot:run`&#10;   - Loads local props automatically.&#10;   - API runs on http://localhost:8080&#10;&#10;### Frontend&#10;1. cd reservation-frontend&#10;2. `npm install`&#10;3. Edit `environment.local.ts` if needed.&#10;4. `ng serve`&#10;   - App runs on http://localhost:4200&#10;   - Proxies API to backend via proxy.conf.js&#10;&#10;## Usage&#10;1. Start backend (port 8080).&#10;2. Start frontend (port 4200).&#10;3. Open http://localhost:4200&#10;4. Use Reservation Form to create reservations.&#10;5. View list in Reservation List component.&#10;&#10;## Project Structure&#10;```
-Reservation APP/&#10;├── Reservation-Backend/     # Spring Boot API&#10;│   ├── src/main/java/...     # Controllers, Services, Models&#10;│   └── src/main/resources/   # application.properties + local props&#10;└── reservation-frontend/    # Angular app&#10;    ├── src/app/              # Components, Services&#10;    └── src/environments/      # Configs&#10;```&#10;&#10;## Testing&#10;- Backend: `mvn test`&#10;- Frontend: `ng test`&#10;&#10;## Deployment&#10;- Backend: `mvn clean package`, JAR to server.&#10;- Frontend: `ng build --prod`, serve dist/ with nginx/Apache.&#10;&#10;Enjoy managing your reservations!
+# Reservation App&#10;&#10;
+## Overview&#10;
+A web application for managing reservations, built with:&#10; 
+
+**Frontend**: Angular (modern SPA framework)&#10; 
+
+**Backend**: Spring Boot (Java REST API with PostgreSQL database)&#10;&#10;Features: Create, list, and manage reservations with status tracking.&#10;&#10;
+## Prerequisites&#10;
+- Java 17+ and Maven (backend)&#10;
+- Node.js 18+ and Angular CLI (frontend)&#10;
+- PostgreSQL database (localhost:5432/reservation, customize in application-local.properties)&#10;
+
+## Secure Configs (gitignored)&#10;
+- `Reservation-Backend/src/main/resources/application-local.properties`:
+
+## DB credentials (edit password!).&#10;
+- `reservation-frontend/src/environments/environment.local.ts`:
+
+# API secrets.&#10;&#10;
+
+## Setup & Run&#10;&#10;
+
+### Backend&#10;
+
+1. cd Reservation-Backend&#10;
+2. Edit `application-local.properties` (set your DB password).&#10;
+3. `mvn spring-boot:run`&#10;
+- Loads local props automatically.&#10;
+- API runs on http://localhost:8080
+
+### Frontend&#10;
+1. cd reservation-frontend&#10;
+2. `npm install`&#10;
+3. Edit `environment.local.ts` if needed.&#10;
+4. `ng serve`&#10;
+- App runs on http://localhost:4200
+- Proxies API to backend via proxy.conf.js&#10;&#10;
+## Usage&#10;
+1. Start backend (port 8080).&#10;
+2. Start frontend (port 4200).&#10;
+3. Open http://localhost:4200
+4. Use Reservation Form to create reservations.&#10;
+5. View list in Reservation List component.&#10;&#10;
+## Project Structure&#10;
+```Reservation APP/&#10;
+├── Reservation-Backend/
+├── src/main/java/...# Controllers, Services, Models&#10;
+│   └── src/main/resources/   # application.properties + local props&#10;
+└── reservation-frontend/    # Angular app&#10;
+├── src/app/              # Components, Services&#10;
+└── src/environments/      # Configs&#10;
+```
+
+## Testing&#10;
+- Backend: `mvn test`&#10;
+- Frontend: `ng test`&#10;&#10;
+## Deployment&#10;
+- Backend: `mvn clean package`, JAR to server.&#10;
+- Frontend: `ng build --prod`, serve dist/ with nginx/Apache.&#10;&#10;
+
+## Enjoy managing your reservations!
