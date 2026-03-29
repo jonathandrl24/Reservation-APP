@@ -1,0 +1,99 @@
+<section class="reservation-form-page" aria-labelledby="form-heading">
+  <div class="surface-card">
+    <header class="form-header">
+      <a routerLink="/" class="back-link">
+        <span class="back-link-arrow" aria-hidden="true">←</span>
+        Volver al listado
+      </a>
+      <p class="eyebrow">Alta</p>
+      <h1 id="form-heading" class="page-title">Nueva reserva</h1>
+      <p class="page-subtitle">Completa los datos. Todos los campos son obligatorios.</p>
+    </header>
+
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="field">
+        <label for="nombreCliente">Nombre del cliente</label>
+        <input
+          id="nombreCliente"
+          type="text"
+          formControlName="nombreCliente"
+          autocomplete="name"
+          maxlength="100"
+          placeholder="Ej. María García"
+          [attr.aria-invalid]="showError('nombreCliente')"
+          [attr.aria-describedby]="showError('nombreCliente') ? errorId('nombreCliente') : null"
+        />
+        @if (showError('nombreCliente')) {
+          <span class="field-error" [id]="errorId('nombreCliente')" role="alert">
+            Indica el nombre del cliente.
+          </span>
+        }
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fecha">Fecha</label>
+          <input
+            id="fecha"
+            type="date"
+            formControlName="fecha"
+            [attr.aria-invalid]="showError('fecha')"
+            [attr.aria-describedby]="showError('fecha') ? errorId('fecha') : null"
+          />
+          @if (showError('fecha')) {
+            <span class="field-error" [id]="errorId('fecha')" role="alert">Selecciona una fecha.</span>
+          }
+        </div>
+
+        <div class="field">
+          <label for="hora">Hora</label>
+          <input
+            id="hora"
+            type="time"
+            step="1"
+            formControlName="hora"
+            [attr.aria-invalid]="showError('hora')"
+            [attr.aria-describedby]="showError('hora') ? errorId('hora') : null"
+          />
+          @if (showError('hora')) {
+            <span class="field-error" [id]="errorId('hora')" role="alert">Indica la hora.</span>
+          }
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="servicio">Servicio</label>
+        <div class="select-wrap">
+          <select
+            id="servicio"
+            formControlName="servicio"
+            [attr.aria-invalid]="showError('servicio')"
+            [attr.aria-describedby]="showError('servicio') ? errorId('servicio') : null"
+          >
+            <option value="" disabled>Selecciona un servicio</option>
+            @for (opt of offeredServices; track opt.value) {
+              <option [value]="opt.value">{{ opt.label }}</option>
+            }
+          </select>
+        </div>
+        @if (showError('servicio')) {
+          <span class="field-error" [id]="errorId('servicio')" role="alert">
+            Elige uno de los servicios disponibles.
+          </span>
+        }
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-primary" [disabled]="submitting()">
+          @if (submitting()) {
+            <span class="btn-spinner" aria-hidden="true"></span>
+            Guardando…
+          } @else {
+            Guardar reserva
+          }
+        </button>
+        <a routerLink="/" class="btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</section>

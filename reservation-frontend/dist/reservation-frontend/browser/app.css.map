@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.css"],
+  "sourcesContent": [":host {\r\n  display: block;\r\n  min-height: 100vh;\r\n}\r\n\r\n.app-shell {\r\n  min-height: 100vh;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.app-main {\r\n  flex: 1;\r\n  width: 100%;\r\n  padding: clamp(1rem, 3vw, 2rem) clamp(0.75rem, 2vw, 1.5rem) 3rem;\r\n}\r\n"],
+  "mappings": ";AAAA;AACE,WAAS;AACT,cAAY;AACd;AAEA,CAAC;AACC,cAAY;AACZ,WAAS;AACT,kBAAgB;AAClB;AAEA,CAAC;AACC,QAAM;AACN,SAAO;AACP,WAAS,MAAM,IAAI,EAAE,GAAG,EAAE,MAAM,MAAM,OAAO,EAAE,GAAG,EAAE,QAAQ;AAC9D;",
+  "names": []
+}

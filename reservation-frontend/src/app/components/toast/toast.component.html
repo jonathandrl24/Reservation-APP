@@ -1,0 +1,13 @@
+@if (toastService.toast(); as t) {
+  <div
+    class="toast toast-error"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <p class="toast-message">{{ t.message }}</p>
+    <button type="button" class="toast-close" (click)="dismiss()" aria-label="Cerrar notificación">
+      Cerrar
+    </button>
+  </div>
+}

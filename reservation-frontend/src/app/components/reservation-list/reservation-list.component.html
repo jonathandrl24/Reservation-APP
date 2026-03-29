@@ -1,0 +1,91 @@
+<section class="reservation-list" aria-labelledby="reservation-list-heading">
+  <div class="surface-card">
+    <header class="list-header">
+      <div class="list-header-text">
+        <p class="eyebrow">Panel</p>
+        <h1 id="reservation-list-heading" class="page-title">Reservas</h1>
+        <p class="page-subtitle">Gestiona las reservas activas y cancela las que ya no apliquen.</p>
+      </div>
+      <a routerLink="/crear" class="btn-new">
+        <span class="btn-new-icon" aria-hidden="true">+</span>
+        Nueva reserva
+      </a>
+    </header>
+
+    @if (errorMessage(); as err) {
+      <div class="alert alert-error" role="alert">{{ err }}</div>
+    }
+
+    @if (loading()) {
+      <div class="loading-state" aria-live="polite">
+        <span class="spinner" aria-hidden="true"></span>
+        <span>Cargando reservas…</span>
+      </div>
+    } @else {
+      <div class="table-wrap">
+        <table class="reservations-table">
+          <caption class="visually-hidden">
+            Listado de reservas con nombre del cliente, fecha, hora, servicio, estado y acción para cancelar
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Cliente</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Servicio</th>
+              <th scope="col">Estado</th>
+              <th scope="col"><span class="visually-hidden">Acciones</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of reservations(); track row.id) {
+              <tr>
+                <td>
+                  <span class="cell-strong">{{ row.customerName }}</span>
+                </td>
+                <td>
+                  <time [attr.datetime]="row.date">{{ row.date }}</time>
+                </td>
+                <td>
+                  <span class="cell-mono">{{ row.time }}</span>
+                </td>
+                <td>{{ row.service }}</td>
+                <td>
+                  @if (row.status === ReservationStatus.CANCELED) {
+                    <span class="badge badge-canceled">Cancelada</span>
+                  } @else {
+                    <span class="badge badge-active">Activa</span>
+                  }
+                </td>
+                <td class="actions">
+                  <button
+                    type="button"
+                    class="btn-cancel"
+                    [disabled]="row.status === ReservationStatus.CANCELED || cancelingId() === row.id"
+                    [attr.aria-busy]="cancelingId() === row.id ? 'true' : null"
+                    (click)="cancelReservation(row)"
+                    [attr.aria-label]="'Cancelar reserva de ' + row.customerName + ' el ' + row.date + ' a las ' + row.time"
+                  >
+                    @if (cancelingId() === row.id) {
+                      Cancelando…
+                    } @else {
+                      Cancelar
+                    }
+                  </button>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="6" class="empty-cell">
+                  <span class="empty-icon" aria-hidden="true">—</span>
+                  No hay reservas registradas.
+                  <a routerLink="/crear" class="empty-link">Crear la primera</a>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div>
+</section>
